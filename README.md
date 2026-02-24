@@ -41,7 +41,7 @@ The bot is built on a **Model Context Protocol (MCP)** architecture — each cap
 Discord Message
        ↓
 ┌─────────────────────────────────────────────────────────────┐
-│                    MCP Orchestrator                          │
+│                    MCP Orchestrator                         │
 │   Routes commands, manages flow, enforces error boundaries  │
 ├──────────┬──────────┬──────────┬──────────┬─────────────────┤
 │ Explain  │   RAG    │  Memory  │  Pref    │     Prompt      │
