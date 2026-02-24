@@ -1,0 +1,766 @@
+[
+  {
+    "name": "PEN-200: Penetration Testing with Kali Linux",
+    "url": "https://www.offsec.com/courses/pen-200/",
+    "platform": "OffSec",
+    "certification": "OSCP",
+    "level": "intermediate",
+    "topics": [
+      "penetration testing",
+      "kali linux",
+      "web security",
+      "active directory",
+      "privilege escalation",
+      "buffer overflow"
+    ],
+    "duration": "90 days",
+    "free": false
+  },
+  {
+    "name": "WEB-200: Foundational Web Application Assessments with Kali Linux",
+    "url": "https://www.offsec.com/courses/web-200/",
+    "platform": "OffSec",
+    "certification": "OSWA",
+    "level": "intermediate",
+    "topics": [
+      "web security",
+      "sql injection",
+      "xss",
+      "authentication",
+      "access control"
+    ],
+    "duration": "90 days",
+    "free": false
+  },
+  {
+    "name": "WEB-300: Advanced Web Attacks and Exploitation",
+    "url": "https://www.offsec.com/courses/web-300/",
+    "platform": "OffSec",
+    "certification": "OSWE",
+    "level": "expert",
+    "topics": [
+      "web security",
+      "deserialization",
+      "ssti",
+      "sql injection",
+      "source code review"
+    ],
+    "duration": "90 days",
+    "free": false
+  },
+  {
+    "name": "PEN-300: Evasion Techniques and Breaching Defenses",
+    "url": "https://www.offsec.com/courses/pen-300/",
+    "platform": "OffSec",
+    "certification": "OSEP",
+    "level": "expert",
+    "topics": [
+      "evasion",
+      "antivirus bypass",
+      "active directory",
+      "lateral movement",
+      "process injection"
+    ],
+    "duration": "90 days",
+    "free": false
+  },
+  {
+    "name": "EXP-301: Windows User Mode Exploit Development",
+    "url": "https://www.offsec.com/courses/exp-301/",
+    "platform": "OffSec",
+    "certification": "OSED",
+    "level": "expert",
+    "topics": [
+      "exploit development",
+      "buffer overflow",
+      "rop",
+      "windows",
+      "reverse engineering"
+    ],
+    "duration": "90 days",
+    "free": false
+  },
+  {
+    "name": "SOC-200: Security Operations and Defensive Analysis",
+    "url": "https://www.offsec.com/courses/soc-200/",
+    "platform": "OffSec",
+    "certification": "OSDA",
+    "level": "intermediate",
+    "topics": [
+      "siem",
+      "log analysis",
+      "incident response",
+      "network monitoring",
+      "threat detection"
+    ],
+    "duration": "90 days",
+    "free": false
+  },
+  {
+    "name": "Practical Network Penetration Tester",
+    "url": "https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course",
+    "platform": "TCM Security",
+    "certification": "PNPT",
+    "level": "intermediate",
+    "topics": [
+      "penetration testing",
+      "active directory",
+      "web security",
+      "networking",
+      "privilege escalation"
+    ],
+    "duration": "25 hours",
+    "free": false
+  },
+  {
+    "name": "Practical Junior Penetration Tester",
+    "url": "https://academy.tcm-sec.com/p/practical-junior-penetration-tester-certification",
+    "platform": "TCM Security",
+    "certification": "PJPT",
+    "level": "beginner",
+    "topics": [
+      "penetration testing",
+      "networking",
+      "linux",
+      "web security",
+      "report writing"
+    ],
+    "duration": "15 hours",
+    "free": false
+  },
+  {
+    "name": "Open-Source Intelligence (OSINT) Fundamentals",
+    "url": "https://academy.tcm-sec.com/p/osint-fundamentals",
+    "platform": "TCM Security",
+    "level": "beginner",
+    "topics": [
+      "osint",
+      "reconnaissance",
+      "information gathering",
+      "social engineering"
+    ],
+    "duration": "9 hours",
+    "free": false
+  },
+  {
+    "name": "Practical Malware Analysis & Triage",
+    "url": "https://academy.tcm-sec.com/p/practical-malware-analysis-triage",
+    "platform": "TCM Security",
+    "level": "intermediate",
+    "topics": [
+      "malware analysis",
+      "reverse engineering",
+      "triage",
+      "pe analysis"
+    ],
+    "duration": "10 hours",
+    "free": false
+  },
+  {
+    "name": "Junior Penetration Tester",
+    "url": "https://tryhackme.com/path/outline/jrpenetrationtester",
+    "platform": "TryHackMe",
+    "level": "beginner",
+    "topics": [
+      "penetration testing",
+      "web security",
+      "networking",
+      "privilege escalation",
+      "nmap"
+    ],
+    "duration": "64 hours",
+    "free": false
+  },
+  {
+    "name": "Pre Security",
+    "url": "https://tryhackme.com/path/outline/presecurity",
+    "platform": "TryHackMe",
+    "level": "beginner",
+    "topics": [
+      "networking",
+      "linux",
+      "windows",
+      "web security",
+      "fundamentals"
+    ],
+    "duration": "40 hours",
+    "free": true
+  },
+  {
+    "name": "Complete Beginner",
+    "url": "https://tryhackme.com/path/outline/beginner",
+    "platform": "TryHackMe",
+    "level": "beginner",
+    "topics": [
+      "linux",
+      "web security",
+      "cryptography",
+      "networking",
+      "scripting"
+    ],
+    "duration": "64 hours",
+    "free": false
+  },
+  {
+    "name": "Cyber Defense",
+    "url": "https://tryhackme.com/path/outline/blueteam",
+    "platform": "TryHackMe",
+    "level": "intermediate",
+    "topics": [
+      "siem",
+      "forensics",
+      "incident response",
+      "threat intelligence",
+      "malware analysis"
+    ],
+    "duration": "48 hours",
+    "free": false
+  },
+  {
+    "name": "Offensive Pentesting",
+    "url": "https://tryhackme.com/path/outline/pentesting",
+    "platform": "TryHackMe",
+    "level": "intermediate",
+    "topics": [
+      "buffer overflow",
+      "active directory",
+      "web security",
+      "privilege escalation"
+    ],
+    "duration": "47 hours",
+    "free": false
+  },
+  {
+    "name": "Red Teaming",
+    "url": "https://tryhackme.com/path/outline/redteaming",
+    "platform": "TryHackMe",
+    "level": "expert",
+    "topics": [
+      "red team",
+      "c2",
+      "evasion",
+      "social engineering",
+      "active directory"
+    ],
+    "duration": "48 hours",
+    "free": false
+  },
+  {
+    "name": "SOC Level 1",
+    "url": "https://tryhackme.com/path/outline/soclevel1",
+    "platform": "TryHackMe",
+    "level": "intermediate",
+    "topics": [
+      "soc",
+      "siem",
+      "splunk",
+      "incident response",
+      "log analysis"
+    ],
+    "duration": "53 hours",
+    "free": false
+  },
+  {
+    "name": "SOC Level 2",
+    "url": "https://tryhackme.com/path/outline/soclevel2",
+    "platform": "TryHackMe",
+    "level": "expert",
+    "topics": [
+      "soc",
+      "threat hunting",
+      "forensics",
+      "incident response",
+      "malware analysis"
+    ],
+    "duration": "41 hours",
+    "free": false
+  },
+  {
+    "name": "Bug Bounty Hunter",
+    "url": "https://academy.hackthebox.com/path/preview/bug-bounty-hunter",
+    "platform": "HackTheBox",
+    "level": "intermediate",
+    "topics": [
+      "bug bounty",
+      "web security",
+      "xss",
+      "sql injection",
+      "ssrf",
+      "xxe"
+    ],
+    "duration": "45 hours",
+    "free": false
+  },
+  {
+    "name": "Penetration Tester",
+    "url": "https://academy.hackthebox.com/path/preview/penetration-tester",
+    "platform": "HackTheBox",
+    "level": "intermediate",
+    "topics": [
+      "penetration testing",
+      "web security",
+      "active directory",
+      "privilege escalation"
+    ],
+    "duration": "140 hours",
+    "free": false
+  },
+  {
+    "name": "SOC Analyst",
+    "url": "https://academy.hackthebox.com/path/preview/soc-analyst",
+    "platform": "HackTheBox",
+    "level": "intermediate",
+    "topics": [
+      "soc",
+      "siem",
+      "incident response",
+      "log analysis",
+      "splunk"
+    ],
+    "duration": "50 hours",
+    "free": false
+  },
+  {
+    "name": "Active Directory Penetration Tester",
+    "url": "https://academy.hackthebox.com/path/preview/active-directory-penetration-tester",
+    "platform": "HackTheBox",
+    "level": "expert",
+    "topics": [
+      "active directory",
+      "kerberos",
+      "ldap",
+      "windows",
+      "lateral movement"
+    ],
+    "duration": "70 hours",
+    "free": false
+  },
+  {
+    "name": "CPTS - Certified Penetration Testing Specialist",
+    "url": "https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist",
+    "platform": "HackTheBox",
+    "certification": "HTB CPTS",
+    "level": "expert",
+    "topics": [
+      "penetration testing",
+      "active directory",
+      "web security",
+      "pivoting",
+      "report writing"
+    ],
+    "duration": "200 hours",
+    "free": false
+  },
+  {
+    "name": "eJPT - Junior Penetration Tester",
+    "url": "https://security.ine.com/certifications/ejpt-certification/",
+    "platform": "INE",
+    "certification": "eJPT",
+    "level": "beginner",
+    "topics": [
+      "penetration testing",
+      "networking",
+      "web security",
+      "metasploit",
+      "enumeration"
+    ],
+    "duration": "40 hours",
+    "free": false
+  },
+  {
+    "name": "eCPPT - Certified Professional Penetration Tester",
+    "url": "https://security.ine.com/certifications/ecppt-certification/",
+    "platform": "INE",
+    "certification": "eCPPT",
+    "level": "intermediate",
+    "topics": [
+      "penetration testing",
+      "buffer overflow",
+      "pivoting",
+      "web security",
+      "ruby"
+    ],
+    "duration": "60 hours",
+    "free": false
+  },
+  {
+    "name": "eWPT - Web Application Penetration Tester",
+    "url": "https://security.ine.com/certifications/ewpt-certification/",
+    "platform": "INE",
+    "certification": "eWPT",
+    "level": "intermediate",
+    "topics": [
+      "web security",
+      "xss",
+      "sql injection",
+      "authentication",
+      "session management"
+    ],
+    "duration": "40 hours",
+    "free": false
+  },
+  {
+    "name": "CompTIA Security+ (SY0-701)",
+    "url": "https://www.comptia.org/certifications/security",
+    "platform": "CompTIA",
+    "certification": "Security+",
+    "level": "beginner",
+    "topics": [
+      "security fundamentals",
+      "networking",
+      "compliance",
+      "risk management",
+      "cryptography"
+    ],
+    "duration": "90 days",
+    "free": false
+  },
+  {
+    "name": "CompTIA CySA+ (CS0-003)",
+    "url": "https://www.comptia.org/certifications/cybersecurity-analyst",
+    "platform": "CompTIA",
+    "certification": "CySA+",
+    "level": "intermediate",
+    "topics": [
+      "threat detection",
+      "siem",
+      "incident response",
+      "vulnerability management",
+      "forensics"
+    ],
+    "duration": "90 days",
+    "free": false
+  },
+  {
+    "name": "CompTIA PenTest+ (PT0-002)",
+    "url": "https://www.comptia.org/certifications/pentest",
+    "platform": "CompTIA",
+    "certification": "PenTest+",
+    "level": "intermediate",
+    "topics": [
+      "penetration testing",
+      "vulnerability scanning",
+      "scripting",
+      "report writing"
+    ],
+    "duration": "90 days",
+    "free": false
+  },
+  {
+    "name": "SEC504: Hacker Tools, Techniques, and Incident Handling",
+    "url": "https://www.sans.org/cyber-security-courses/hacker-techniques-incident-handling/",
+    "platform": "SANS",
+    "certification": "GCIH",
+    "level": "intermediate",
+    "topics": [
+      "incident handling",
+      "penetration testing",
+      "hacker techniques",
+      "ir"
+    ],
+    "duration": "6 days",
+    "free": false
+  },
+  {
+    "name": "SEC560: Enterprise Penetration Testing",
+    "url": "https://www.sans.org/cyber-security-courses/enterprise-penetration-testing/",
+    "platform": "SANS",
+    "certification": "GPEN",
+    "level": "expert",
+    "topics": [
+      "penetration testing",
+      "enterprise",
+      "active directory",
+      "pivoting",
+      "password attacks"
+    ],
+    "duration": "6 days",
+    "free": false
+  },
+  {
+    "name": "FOR508: Advanced Incident Response, Threat Hunting, and Digital Forensics",
+    "url": "https://www.sans.org/cyber-security-courses/advanced-incident-response-threat-hunting-training/",
+    "platform": "SANS",
+    "certification": "GCFA",
+    "level": "expert",
+    "topics": [
+      "forensics",
+      "incident response",
+      "threat hunting",
+      "memory forensics",
+      "timeline analysis"
+    ],
+    "duration": "6 days",
+    "free": false
+  },
+  {
+    "name": "SEC401: Security Essentials - Network, Endpoint, and Cloud",
+    "url": "https://www.sans.org/cyber-security-courses/security-essentials-network-endpoint-cloud/",
+    "platform": "SANS",
+    "certification": "GSEC",
+    "level": "beginner",
+    "topics": [
+      "security fundamentals",
+      "networking",
+      "cloud security",
+      "defense in depth"
+    ],
+    "duration": "6 days",
+    "free": false
+  },
+  {
+    "name": "SEC542: Web App Penetration Testing and Ethical Hacking",
+    "url": "https://www.sans.org/cyber-security-courses/web-app-penetration-testing-ethical-hacking/",
+    "platform": "SANS",
+    "certification": "GWAPT",
+    "level": "intermediate",
+    "topics": [
+      "web security",
+      "sql injection",
+      "xss",
+      "api security",
+      "burp suite"
+    ],
+    "duration": "6 days",
+    "free": false
+  },
+  {
+    "name": "Certified Ethical Hacker (CEH)",
+    "url": "https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/",
+    "platform": "EC-Council",
+    "certification": "CEH",
+    "level": "intermediate",
+    "topics": [
+      "ethical hacking",
+      "penetration testing",
+      "networking",
+      "malware",
+      "social engineering"
+    ],
+    "duration": "5 days",
+    "free": false
+  },
+  {
+    "name": "Hack The Box Starting Point",
+    "url": "https://app.hackthebox.com/starting-point",
+    "platform": "HackTheBox",
+    "level": "beginner",
+    "topics": [
+      "enumeration",
+      "web security",
+      "linux",
+      "windows",
+      "privilege escalation"
+    ],
+    "duration": "20 hours",
+    "free": true
+  },
+  {
+    "name": "PortSwigger Web Security Academy",
+    "url": "https://portswigger.net/web-security",
+    "platform": "PortSwigger",
+    "level": "beginner",
+    "topics": [
+      "web security",
+      "sql injection",
+      "xss",
+      "csrf",
+      "ssrf",
+      "deserialization"
+    ],
+    "duration": "Self-paced",
+    "free": true
+  },
+  {
+    "name": "Introduction to Pentesting - Free Course",
+    "url": "https://www.cybrary.it/course/introduction-to-it-and-cybersecurity/",
+    "platform": "Cybrary",
+    "level": "beginner",
+    "topics": [
+      "cybersecurity",
+      "fundamentals",
+      "networking",
+      "security operations"
+    ],
+    "duration": "6 hours",
+    "free": true
+  },
+  {
+    "name": "Linux Privilege Escalation for Beginners",
+    "url": "https://academy.tcm-sec.com/p/linux-privilege-escalation",
+    "platform": "TCM Security",
+    "level": "beginner",
+    "topics": [
+      "linux",
+      "privilege escalation",
+      "enumeration",
+      "kernel exploits"
+    ],
+    "duration": "6.5 hours",
+    "free": false
+  },
+  {
+    "name": "Windows Privilege Escalation for Beginners",
+    "url": "https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners",
+    "platform": "TCM Security",
+    "level": "beginner",
+    "topics": [
+      "windows",
+      "privilege escalation",
+      "enumeration",
+      "token impersonation"
+    ],
+    "duration": "7 hours",
+    "free": false
+  },
+  {
+    "name": "Movement, Pivoting and Persistence",
+    "url": "https://academy.tcm-sec.com/p/movement-pivoting-and-persistence-for-pentesters-and-ethical-hackers",
+    "platform": "TCM Security",
+    "level": "intermediate",
+    "topics": [
+      "pivoting",
+      "tunneling",
+      "persistence",
+      "lateral movement",
+      "active directory"
+    ],
+    "duration": "4 hours",
+    "free": false
+  },
+  {
+    "name": "Intro to Web Hacking",
+    "url": "https://tryhackme.com/module/intro-to-web-hacking",
+    "platform": "TryHackMe",
+    "level": "beginner",
+    "topics": [
+      "web security",
+      "sql injection",
+      "xss",
+      "ssrf",
+      "idor",
+      "command injection"
+    ],
+    "duration": "10 hours",
+    "free": false
+  },
+  {
+    "name": "Network Security Module",
+    "url": "https://tryhackme.com/module/network-security",
+    "platform": "TryHackMe",
+    "level": "intermediate",
+    "topics": [
+      "nmap",
+      "snort",
+      "network security",
+      "ids",
+      "firewall"
+    ],
+    "duration": "12 hours",
+    "free": false
+  },
+  {
+    "name": "Throwback - Active Directory Lab",
+    "url": "https://tryhackme.com/network/throwback",
+    "platform": "TryHackMe",
+    "level": "expert",
+    "topics": [
+      "active directory",
+      "pivoting",
+      "phishing",
+      "persistence",
+      "windows"
+    ],
+    "duration": "30 hours",
+    "free": false
+  },
+  {
+    "name": "Wreath - Multi-Machine Network",
+    "url": "https://tryhackme.com/room/dvwawreath",
+    "platform": "TryHackMe",
+    "level": "expert",
+    "topics": [
+      "pivoting",
+      "tunneling",
+      "web security",
+      "empire",
+      "c2"
+    ],
+    "duration": "15 hours",
+    "free": false
+  },
+  {
+    "name": "Dante - Pro Lab",
+    "url": "https://app.hackthebox.com/prolabs/overview/dante",
+    "platform": "HackTheBox",
+    "level": "intermediate",
+    "topics": [
+      "penetration testing",
+      "active directory",
+      "pivoting",
+      "privilege escalation"
+    ],
+    "duration": "Self-paced",
+    "free": false
+  },
+  {
+    "name": "Offshore - Pro Lab",
+    "url": "https://app.hackthebox.com/prolabs/overview/offshore",
+    "platform": "HackTheBox",
+    "level": "expert",
+    "topics": [
+      "active directory",
+      "pivoting",
+      "enterprise",
+      "lateral movement"
+    ],
+    "duration": "Self-paced",
+    "free": false
+  },
+  {
+    "name": "RastaLabs - Pro Lab",
+    "url": "https://app.hackthebox.com/prolabs/overview/rastalabs",
+    "platform": "HackTheBox",
+    "level": "expert",
+    "topics": [
+      "red team",
+      "active directory",
+      "evasion",
+      "phishing",
+      "c2"
+    ],
+    "duration": "Self-paced",
+    "free": false
+  },
+  {
+    "name": "Google Cybersecurity Professional Certificate",
+    "url": "https://www.coursera.org/professional-certificates/google-cybersecurity",
+    "platform": "Coursera",
+    "certification": "Google Cybersecurity",
+    "level": "beginner",
+    "topics": [
+      "security fundamentals",
+      "incident response",
+      "linux",
+      "python",
+      "siem"
+    ],
+    "duration": "6 months",
+    "free": false
+  },
+  {
+    "name": "IBM Cybersecurity Analyst Professional Certificate",
+    "url": "https://www.coursera.org/professional-certificates/ibm-cybersecurity-analyst",
+    "platform": "Coursera",
+    "certification": "IBM Cybersecurity Analyst",
+    "level": "beginner",
+    "topics": [
+      "cybersecurity",
+      "network security",
+      "incident response",
+      "forensics"
+    ],
+    "duration": "4 months",
+    "free": false
+  }
+]

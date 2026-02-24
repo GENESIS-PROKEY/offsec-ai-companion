@@ -1,0 +1,14 @@
+node_modules
+dist
+tests
+*.md
+!package.json
+.git
+.github
+.env
+.env.*
+chroma
+data
+*.test.ts
+vitest.config.ts
+tsconfig.json

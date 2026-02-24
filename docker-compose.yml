@@ -1,0 +1,40 @@
+services:
+  # ChromaDB vector database
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: offsec-chromadb
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma-data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - ANONYMIZED_TELEMETRY=FALSE
+    healthcheck:
+      test: [ "CMD", "wget", "-qO-", "http://localhost:8000/api/v1/heartbeat" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # OffSec AI Companion bot
+  bot:
+    build: .
+    container_name: offsec-bot
+    restart: unless-stopped
+    depends_on:
+      chromadb:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+      - HEALTH_PORT=3001
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data:/app/data
+
+volumes:
+  chroma-data:

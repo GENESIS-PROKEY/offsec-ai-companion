@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+*.db
+data/companion.db
+data/chroma/
+chroma/
+*.log
+.DS_Store
+Thumbs.db
+implementation_plan.md
+tsc_errors.txt
