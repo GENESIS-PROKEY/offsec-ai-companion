@@ -4,6 +4,7 @@ import type { UserContext, ExplainResult, RAGResult, InteractionRecord } from '.
 import type { Level, ExplanationStyle } from '../config/constants.js';
 import { logger } from '../utils/logger.js';
 import { stripOuterCodeFence } from '../utils/formatters.js';
+import { dbRun, dbGet, debouncedSave } from '../db/sqlite.js';
 
 // MCP imports (lazy-initialized)
 import { ExplainMCP } from './explain/index.js';
@@ -327,5 +328,51 @@ RULES:
             preferredStyle: (prefs?.preferredStyle as ExplanationStyle) ?? 'detailed',
             recentHistory: [],
         };
+    }
+
+    // ─── Quiz Persistence ─────────────────────────────────────────────
+
+    /** Save quiz state to SQLite for resume across restarts */
+    saveQuizState(userId: string, state: {
+        topic: string;
+        questionNumber: number;
+        totalQuestions: number;
+        previousQuestions: string[];
+        score: number;
+        level: string;
+    }): void {
+        dbRun(
+            `INSERT OR REPLACE INTO quiz_sessions (user_id, topic, question_number, total_questions, previous_questions, score, level, updated_at)
+             VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
+            [userId, state.topic, state.questionNumber, state.totalQuestions, JSON.stringify(state.previousQuestions), state.score, state.level]
+        );
+        debouncedSave();
+    }
+
+    /** Load a saved quiz session (returns null if none exists) */
+    loadQuizState(userId: string): {
+        topic: string;
+        questionNumber: number;
+        totalQuestions: number;
+        previousQuestions: string[];
+        score: number;
+        level: string;
+    } | null {
+        const row = dbGet('SELECT * FROM quiz_sessions WHERE user_id = ?', [userId]);
+        if (!row) return null;
+        return {
+            topic: row.topic as string,
+            questionNumber: row.question_number as number,
+            totalQuestions: row.total_questions as number,
+            previousQuestions: JSON.parse((row.previous_questions as string) ?? '[]'),
+            score: row.score as number,
+            level: row.level as string,
+        };
+    }
+
+    /** Clear quiz session on completion or explicit reset */
+    clearQuizState(userId: string): void {
+        dbRun('DELETE FROM quiz_sessions WHERE user_id = ?', [userId]);
+        debouncedSave();
     }
 }

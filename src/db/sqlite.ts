@@ -83,6 +83,20 @@ function initSchema(db: SqlJsDatabase) {
     );
   `);
 
+  db.run(`
+    CREATE TABLE IF NOT EXISTS quiz_sessions (
+      user_id TEXT PRIMARY KEY,
+      topic TEXT NOT NULL,
+      question_number INTEGER NOT NULL DEFAULT 1,
+      total_questions INTEGER NOT NULL DEFAULT 5,
+      previous_questions TEXT NOT NULL DEFAULT '[]',
+      score INTEGER NOT NULL DEFAULT 0,
+      level TEXT NOT NULL DEFAULT 'beginner',
+      updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+      FOREIGN KEY (user_id) REFERENCES users(user_id)
+    );
+  `);
+
   logger.info('SQLite schema initialized');
 }
 

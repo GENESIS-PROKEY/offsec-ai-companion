@@ -315,6 +315,12 @@ async function runQuizRound(
         // Track this question to prevent repeats
         previousQuestions.push(quiz.question);
 
+        // Persist quiz state for resume across restarts
+        orchestrator.saveQuizState(userId, {
+            topic, questionNumber: q, totalQuestions,
+            previousQuestions, score, level: levelOverride ?? 'intermediate',
+        });
+
         // Build question embed + buttons
         const questionId = `${Date.now()}_${q}`;
         const questionEmbed = buildQuestionEmbed(quiz, topic, q, totalQuestions, score);
@@ -376,4 +382,7 @@ async function runQuizRound(
     // Final score
     const finalEmbed = buildFinalScoreEmbed(score, totalQuestions, topic);
     await io.sendMessage({ embeds: [finalEmbed] });
+
+    // Clear persisted quiz session on completion
+    orchestrator.clearQuizState(userId);
 }

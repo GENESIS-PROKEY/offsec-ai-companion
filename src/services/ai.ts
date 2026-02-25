@@ -274,6 +274,74 @@ export async function generateCompletion(
     }
 }
 
+// ─── Streaming Completion ────────────────────────────────────────────
+
+/**
+ * Generate a text completion with streaming.
+ * Yields partial text chunks as they arrive from the LLM.
+ * Uses the same 6-tier fallback chain as generateCompletion.
+ */
+export async function* generateCompletionStream(
+    systemPrompt: string,
+    userPrompt: string,
+    options?: { temperature?: number; maxTokens?: number }
+): AsyncGenerator<string> {
+    await llmQueue.acquire();
+    try {
+        let lastError: unknown = null;
+
+        for (const key of PROVIDER_PRIORITY) {
+            const provider = providers[key];
+            const now = Date.now();
+
+            if (provider.rateLimitedUntil > 0) {
+                if (now >= provider.rateLimitedUntil) {
+                    provider.rateLimitedUntil = 0;
+                } else {
+                    continue;
+                }
+            }
+
+            try {
+                logger.info({ provider: provider.name }, '🔄 Streaming LLM request starting');
+                const effectiveMaxTokens = Math.min(options?.maxTokens ?? config.ai.maxTokens, 65536);
+
+                const stream = await provider.client.chat.completions.create({
+                    model: provider.model,
+                    messages: [
+                        { role: 'system', content: systemPrompt },
+                        { role: 'user', content: userPrompt },
+                    ],
+                    temperature: options?.temperature ?? config.ai.temperature,
+                    max_tokens: effectiveMaxTokens,
+                    stream: true,
+                });
+
+                for await (const chunk of stream) {
+                    const delta = chunk.choices[0]?.delta?.content;
+                    if (delta) yield delta;
+                }
+
+                logger.info({ provider: provider.name }, '✅ Streaming response complete');
+                return; // Success
+            } catch (error: unknown) {
+                lastError = error;
+                const apiErr = asApiError(error);
+                const status = apiErr.status ?? apiErr.code;
+                if (status === 429 || status === 402) markRateLimited(key);
+                continue; // Try next provider
+            }
+        }
+
+        throw new LLMError(
+            'all',
+            lastError instanceof Error ? lastError.message : 'All LLM providers failed (stream)'
+        );
+    } finally {
+        llmQueue.release();
+    }
+}
+
 // ─── Embeddings ─────────────────────────────────────────────────────
 
 /**

@@ -185,6 +185,17 @@ export class RAGMCP extends BaseMCP<RAGPayload, RAGResult> {
             similarity: 1 - results.distances[i],
         }));
 
+        // Step 3b: Hybrid keyword boost — exact term matches rank higher
+        // This helps queries like "CVE-2021-44228" or specific tool names
+        // that embeddings alone may not capture precisely
+        const queryTerms = query.toLowerCase().split(/\s+/).filter(w => w.length > 2);
+        for (const chunk of scoredChunks) {
+            const contentLower = chunk.content.toLowerCase();
+            for (const term of queryTerms) {
+                if (contentLower.includes(term)) chunk.similarity += 0.05;
+            }
+        }
+
         const relevantChunks = scoredChunks
             .filter((c) => c.similarity >= 0.3)
             .sort((a, b) => b.similarity - a.similarity)

@@ -3,7 +3,8 @@
 import { BaseMCP } from '../base.js';
 import type { MCPRequest, InteractionRecord } from '../../types/index.js';
 import { getDatabase, dbRun, dbGet, dbAll, debouncedSave } from '../../db/sqlite.js';
-import { generateCompletion } from '../../services/ai.js';
+import { generateCompletion, generateEmbedding } from '../../services/ai.js';
+import { addDocuments, queryDocuments } from '../../db/chroma.js';
 import { MEMORY, type Level } from '../../config/constants.js';
 import { logger } from '../../utils/logger.js';
 
@@ -79,6 +80,11 @@ export class MemoryMCP extends BaseMCP<MemoryPayload, MemoryResult> {
         // Save to disk
         debouncedSave();
 
+        // Embed interaction into ChromaDB for semantic retrieval (fire-and-forget)
+        this.storeSemanticMemory(userId, data).catch((err) =>
+            logger.debug({ err: (err as Error).message }, 'Semantic memory storage skipped (ChromaDB may be down)')
+        );
+
         // Check if summarization is needed
         const countRow = dbGet('SELECT COUNT(*) as cnt FROM interactions WHERE user_id = ?', [userId]);
         const cnt = (countRow?.cnt as number) ?? 0;
@@ -152,5 +158,66 @@ export class MemoryMCP extends BaseMCP<MemoryPayload, MemoryResult> {
         debouncedSave();
 
         return { history: [], summary, totalInteractions: rows.length };
+    }
+
+    // ─── Semantic Memory ─────────────────────────────────────────────
+
+    /** Embed an interaction into ChromaDB for future similarity-based retrieval */
+    private async storeSemanticMemory(userId: string, data: InteractionRecord): Promise<void> {
+        const text = `${data.query} ${(data.response ?? '').slice(0, 200)}`;
+        const embedding = await generateEmbedding(text);
+        await addDocuments(
+            [`mem_${data.id}`],
+            [embedding],
+            [data.query],
+            [{ user_id: userId, command: data.command, timestamp: data.timestamp }]
+        );
+    }
+
+    /**
+     * Retrieve past interactions by semantic similarity to a query.
+     * Returns the top-3 most similar past queries for this user.
+     * Falls back to empty array if ChromaDB is unavailable.
+     */
+    async retrieveSemantic(userId: string, query: string): Promise<InteractionRecord[]> {
+        try {
+            const embedding = await generateEmbedding(query);
+            const results = await queryDocuments(embedding, 5);
+
+            if (results.ids.length === 0) return [];
+
+            // Filter to this user's interactions and limit to 3
+            const userResults = results.ids
+                .map((id, i) => ({
+                    id,
+                    query: results.documents[i],
+                    metadata: results.metadatas[i],
+                    similarity: 1 - results.distances[i],
+                }))
+                .filter(r => (r.metadata.user_id as string) === userId && r.id.startsWith('mem_'))
+                .filter(r => r.similarity >= 0.4)
+                .slice(0, 3);
+
+            // Fetch full interaction records from SQLite
+            return userResults.map(r => {
+                const memId = r.id.replace('mem_', '');
+                const row = dbGet('SELECT * FROM interactions WHERE id = ?', [memId]);
+                if (!row) return null;
+                return {
+                    id: row.id as string,
+                    userId: row.user_id as string,
+                    command: row.command as string,
+                    query: row.query as string,
+                    response: row.response as string,
+                    level: row.level as Level,
+                    confidence: row.confidence as number,
+                    timestamp: row.created_at as string,
+                    topics: JSON.parse((row.topics as string) ?? '[]'),
+                };
+            }).filter((r): r is InteractionRecord => r !== null);
+        } catch (err) {
+            logger.debug({ err: (err as Error).message }, 'Semantic memory retrieval skipped');
+            return [];
+        }
     }
 }
